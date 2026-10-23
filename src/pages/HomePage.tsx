@@ -403,7 +403,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div className="w-full relative bg-[#171717] text-[#EDEDED] min-h-[calc(100vh-64px)] flex flex-col justify-between selection:bg-[#21F1A8]/20 selection:text-[#21F1A8] overflow-x-hidden">
       
-      {/* Background Cosmic Video (Running clearly as requested: "background re video ta clear re chala") */}
+      {/* Background Cosmic Video (Running clearly: "agaru jemiti clear video chalu thila semiti kar") */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video
           src="/assets/aistudio/SaveClip.App_AQP-1_s6oKgmomsX2xzlp9k9a8r_Dx_s0F0w7MaLZbWhAkL3TLyL_i5igfDTiM0XZmg37G7JDVbQUqeP8GQeHgXsyKi3h4ZnrwIb3fs_0ab74794.mp4"
@@ -411,9 +411,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-80 filter brightness-105 contrast-110"
+          className="w-full h-full object-cover opacity-85 filter brightness-105 contrast-110"
         />
-        {/* Soft atmospheric gradient allowing clear cosmic video visibility with clean text legibility */}
+        {/* Soft atmospheric gradient allowing crystal clear video visibility with clean text legibility */}
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#171717] via-transparent to-[#171717]/40" />
         <div className="absolute inset-0 bg-radial from-transparent via-[#171717]/20 to-[#171717]/60" />
@@ -427,22 +427,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
          ========================================================================= */}
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-8 flex flex-col items-center text-center">
         
-        {/* Kicker Tag */}
-        <div className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#21F1A8] px-3.5 py-1.5 bg-[#171717]/85 rounded-full border border-[#21F1A8]/40 backdrop-blur-md shadow-lg shadow-black/40 mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#21F1A8] animate-pulse" />
-          <span>INDIAN KNOWLEDGE SYSTEMS</span>
-          <span className="text-white/40">·</span>
-          <span>SPATIAL UNIVERSE</span>
+        {/* Kicker Tag (Words & Lines in Black, Blue & Neon Rose) */}
+        <div className="inline-flex items-center gap-2 text-xs font-mono font-medium px-3.5 py-1.5 bg-black/90 rounded-full border border-[#FF1361]/50 backdrop-blur-md shadow-lg shadow-black/60 mb-4">
+          <span className="w-2 h-2 rounded-full bg-[#FF1361] shadow-[0_0_8px_#FF1361] animate-pulse" />
+          <span className="text-[#38BDF8] tracking-wider font-semibold">INDIAN KNOWLEDGE SYSTEMS</span>
+          <span className="text-[#FF1361]/80">·</span>
+          <span className="text-[#00D2FF] tracking-wider font-semibold">SPATIAL UNIVERSE</span>
         </div>
 
-        {/* Centered Main Headline */}
+        {/* Centered Main Headline (Words in Blue & Neon Rose) */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-heading font-bold text-white tracking-tight leading-[1.12] mb-3 max-w-3xl drop-shadow-lg">
           Discover the Timeless <br className="hidden sm:inline" />
-          <span className="text-[#21F1A8]">Knowledge of India.</span>
+          <span className="bg-gradient-to-r from-[#00D2FF] via-[#38BDF8] to-[#FF1361] bg-clip-text text-transparent drop-shadow-md">
+            Knowledge of India.
+          </span>
         </h1>
 
-        {/* Short supporting subtitle */}
-        <p className="text-xs sm:text-sm md:text-base text-[#D0D0D0] max-w-xl mb-6 font-body leading-relaxed drop-shadow">
+        {/* Short supporting subtitle (Words in soft Celestial Blue) */}
+        <p className="text-xs sm:text-sm md:text-base text-[#BAE6FD]/90 max-w-xl mb-6 font-body leading-relaxed drop-shadow">
           Explore foundational Indian mathematics, ancient astronomy, philosophy, Ayurveda, and Panini's linguistics through an interactive spatial museum.
         </p>
 
@@ -453,16 +455,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           onMouseLeave={() => setIsGlobeHovered(false)}
         >
           
-          {/* Soft Rhythmic Globe Base Pedestal Glow (Emphasizing Central Spatial Focus) */}
-          <div 
-            className="absolute -bottom-2 sm:-bottom-3 left-1/2 -translate-x-1/2 w-52 sm:w-64 md:w-76 h-9 sm:h-11 rounded-[100%] bg-gradient-to-r from-transparent via-[#21F1A8]/30 to-transparent blur-md pointer-events-none animate-globe-pedestal-glow" 
-            aria-hidden="true" 
-          />
-          <div 
-            className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-32 sm:w-40 md:w-48 h-3.5 sm:h-4.5 rounded-[100%] bg-[#21F1A8]/35 blur-sm pointer-events-none animate-globe-pedestal-glow" 
-            aria-hidden="true" 
-          />
-
           <div
             className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 cursor-grab active:cursor-grabbing perspective-universe flex items-center justify-center touch-none transition-transform active:scale-[1.02] animate-globe-always-moving"
             style={{
@@ -483,24 +475,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             role="region"
             aria-label="Interactive 3D celestial knowledge globe"
           >
-            {/* Subtle Outer 'Bloom' Blur Filter Halo for Apple Vision Pro Ethereal Depth */}
-            <div 
-              className="absolute -inset-4 sm:-inset-5 rounded-full bg-radial from-[#21F1A8]/22 via-[#21F1A8]/06 to-transparent blur-xl pointer-events-none transition-all duration-300"
-              style={{
-                opacity: isGlobeHovered ? 0.95 : 0.65,
-                transform: `translate(${cursorTilt.y * 0.4}px, ${-cursorTilt.x * 0.4}px)`,
-              }}
-              aria-hidden="true" 
-            />
-
-            {/* Outer Subtle Boundary */}
-            <div className="absolute inset-0 rounded-full border border-white/[0.08] pointer-events-none" />
-
-            {/* Rhythmic Glow Aura at the Globe Base */}
-            <div 
-              className="absolute inset-2 sm:inset-3 rounded-full border border-[#21F1A8]/25 shadow-[0_0_30px_rgba(33,241,168,0.25)] pointer-events-none animate-globe-base-glow"
-              aria-hidden="true"
-            />
+            {/* Outer Subtle Boundary Line */}
+            <div className="absolute inset-0 rounded-full border border-[#38BDF8]/25 pointer-events-none" />
 
             {/* 3D Sphere Container */}
             <div 
@@ -509,38 +485,38 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
               }}
             >
-              {/* Equatorial Celestial Ring */}
+              {/* Equatorial Celestial Ring Line (Electric Blue) */}
               <div 
-                className="absolute inset-0 rounded-full border border-[#21F1A8]/50 shadow-[0_0_20px_rgba(33,241,168,0.2)] preserve-3d"
+                className="absolute inset-0 rounded-full border border-[#00D2FF]/75 shadow-[0_0_20px_rgba(0,210,255,0.3)] preserve-3d"
                 style={{ transform: 'rotateX(90deg)' }}
               >
-                <div className="absolute inset-1.5 rounded-full border border-dashed border-[#21F1A8]/25" />
+                <div className="absolute inset-1.5 rounded-full border border-dashed border-[#00D2FF]/35" />
               </div>
 
-              {/* Meridian Ring */}
+              {/* Meridian Ring Line (Ice Blue) */}
               <div 
-                className="absolute inset-0 rounded-full border border-white/20 preserve-3d"
+                className="absolute inset-0 rounded-full border border-[#38BDF8]/35 preserve-3d"
                 style={{ transform: 'rotateY(0deg)' }}
               />
 
-              {/* Colure Ring */}
+              {/* Colure Ring Line (Deep Blue) */}
               <div 
-                className="absolute inset-0 rounded-full border border-white/10 preserve-3d"
+                className="absolute inset-0 rounded-full border border-[#2563EB]/40 preserve-3d"
                 style={{ transform: 'rotateY(90deg)' }}
               />
 
-              {/* Oblique Ecliptic Ring (Kranti Vritta at 23.5 deg) */}
+              {/* Oblique Ecliptic Ring Line (Neon Rose at 23.5 deg) */}
               <div 
-                className="absolute inset-0 rounded-full border border-[#21F1A8]/70 shadow-[0_0_18px_rgba(33,241,168,0.3)] preserve-3d"
+                className="absolute inset-0 rounded-full border border-[#FF1361]/85 shadow-[0_0_20px_rgba(255,19,97,0.38)] preserve-3d"
                 style={{ transform: 'rotateX(66.5deg) rotateY(15deg)' }}
               >
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#21F1A8] shadow-md shadow-[#21F1A8]" />
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#21F1A8] shadow-md shadow-[#21F1A8]" />
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#FF1361] shadow-md shadow-[#FF1361]" />
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#FF1361] shadow-md shadow-[#FF1361]" />
               </div>
 
-              {/* Central Circular Globe (Always moving continuous motion & cosmic video) */}
+              {/* Central Circular Globe (Electric Blue & Neon Rose Border Lines) */}
               <div 
-                className="absolute inset-10 sm:inset-12 rounded-full overflow-hidden border border-[#21F1A8]/80 shadow-[0_0_25px_rgba(33,241,168,0.35)] bg-black flex items-center justify-center animate-circle-auto-moving"
+                className="absolute inset-10 sm:inset-12 rounded-full overflow-hidden border border-[#00D2FF]/85 shadow-[0_0_25px_rgba(0,210,255,0.4)] bg-black flex items-center justify-center animate-circle-auto-moving"
                 role="img"
                 aria-label="Ancient Indian Celestial Knowledge Globe"
               >
@@ -560,29 +536,29 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     className="w-full h-full object-cover scale-110"
                   />
                 </video>
-                <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-[#21F1A8]/30 pointer-events-none" />
+                <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-[#FF1361]/40 pointer-events-none" />
               </div>
 
-              {/* Orbiting Nakshatras */}
+              {/* Orbiting Nakshatras (Neon Rose & Electric Blue) */}
               <div 
-                className="absolute w-2.5 h-2.5 rounded-full bg-[#21F1A8] shadow-[0_0_10px_#21F1A8]"
+                className="absolute w-2.5 h-2.5 rounded-full bg-[#FF1361] shadow-[0_0_12px_#FF1361]"
                 style={{ transform: 'translate3d(85px, 25px, 50px)' }}
                 title="Rohini"
               />
               <div 
-                className="absolute w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#ffffff]"
+                className="absolute w-2 h-2 rounded-full bg-[#00D2FF] shadow-[0_0_10px_#00D2FF]"
                 style={{ transform: 'translate3d(-75px, 80px, -35px)' }}
                 title="Ashwini"
               />
               <div 
-                className="absolute w-2 h-2 rounded-full bg-[#21F1A8]/80 shadow-[0_0_8px_#21F1A8]"
+                className="absolute w-2 h-2 rounded-full bg-[#FF2E93] shadow-[0_0_10px_#FF2E93]"
                 style={{ transform: 'translate3d(25px, -80px, 45px)' }}
                 title="Ardra"
               />
             </div>
           </div>
 
-          {/* Subtle Floating Label on Hover (Active IKS Domain for Spatial Context) */}
+          {/* Subtle Floating Label on Hover (Words & Lines in Black, Blue & Neon Rose) */}
           <div 
             className={`transition-all duration-300 ease-out flex items-center justify-center mt-3 z-20 ${
               isGlobeHovered 
@@ -595,24 +571,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <button
               type="button"
               onClick={() => onNavigate(activeDomain.route)}
-              className="group/pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#1c1c1c]/95 border border-[#21F1A8]/50 shadow-[0_8px_25px_rgba(0,0,0,0.7),0_0_20px_rgba(33,241,168,0.25)] backdrop-blur-xl hover:border-[#21F1A8] hover:bg-[#252525] active:scale-95 transition-all cursor-pointer text-xs"
+              className="group/pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/95 border border-[#FF1361]/60 shadow-[0_8px_25px_rgba(0,0,0,0.8),0_0_20px_rgba(255,19,97,0.3)] backdrop-blur-xl hover:border-[#00D2FF] hover:bg-[#070b19] active:scale-95 transition-all cursor-pointer text-xs"
               title={`Explore ${activeDomain.name} (${activeDomain.sanskrit})`}
             >
-              <span className="w-2 h-2 rounded-full bg-[#21F1A8] shadow-[0_0_8px_#21F1A8] animate-pulse" />
-              <activeDomain.icon className="w-3.5 h-3.5 text-[#21F1A8]" />
+              <span className="w-2 h-2 rounded-full bg-[#FF1361] shadow-[0_0_8px_#FF1361] animate-pulse" />
+              <activeDomain.icon className="w-3.5 h-3.5 text-[#00D2FF]" />
               <span className="font-heading font-semibold text-white tracking-wide">{activeDomain.name}</span>
-              <span className="font-mono text-[11px] text-[#21F1A8] bg-[#21F1A8]/15 px-2 py-0.5 rounded-full border border-[#21F1A8]/30">
+              <span className="font-mono text-[11px] text-[#FF2E93] bg-[#FF1361]/15 px-2 py-0.5 rounded-full border border-[#FF1361]/40 font-semibold">
                 {activeDomain.sanskrit}
               </span>
-              <ChevronRight className="w-3.5 h-3.5 text-[#CCCCCC] group-hover/pill:translate-x-0.5 transition-transform" />
+              <ChevronRight className="w-3.5 h-3.5 text-[#38BDF8] group-hover/pill:translate-x-0.5 transition-transform" />
             </button>
           </div>
 
-          {/* Auto-Rotating Sphere Indicator */}
+          {/* Auto-Rotating Sphere Indicator (Lines & Words in Black & Electric Blue) */}
           <div className={`flex items-center justify-center gap-2 text-xs font-mono text-[#CCCCCC] transition-all duration-300 ${isGlobeHovered ? 'mt-1.5' : 'mt-2.5'}`}>
-            <div className="flex items-center gap-2 text-[#21F1A8] px-3 py-1 rounded-full bg-[#171717]/80 border border-[#21F1A8]/25 shadow-sm backdrop-blur-md">
+            <div className="flex items-center gap-2 text-[#00D2FF] px-3 py-1 rounded-full bg-black/85 border border-[#00D2FF]/35 shadow-sm backdrop-blur-md">
               <Orbit className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '6s' }} />
-              <span>Auto-Rotating Celestial Sphere</span>
+              <span className="tracking-wide">Auto-Rotating Celestial Sphere</span>
             </div>
           </div>
         </div>

@@ -1,6 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppRoute } from '../types/iks';
-import { Sparkles, Menu, X, BookOpen, Clock, Compass, Video, Languages } from 'lucide-react';
+import { 
+  Sparkles, 
+  Menu, 
+  X, 
+  BookOpen, 
+  Clock, 
+  Compass, 
+  Video, 
+  Languages, 
+  Volume2, 
+  VolumeX, 
+  User, 
+  LogIn 
+} from 'lucide-react';
+import { vedicSoundscape } from '../services/vedicSoundscape';
+import { authService } from '../services/authService';
+import { getStudyData } from '../services/storage';
+import { UserProfile } from '../types/auth';
+import { AuthModal } from './AuthModal';
 
 interface NavigationProps {
   currentRoute: AppRoute;
@@ -9,6 +27,54 @@ interface NavigationProps {
 
 export const Navigation: React.FC<NavigationProps> = ({ currentRoute, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [user, setUser] = useState<UserProfile | null>(authService.getCurrentUser());
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [moduleProgress, setModuleProgress] = useState({ completed: 8, total: 12, percentage: 67 });
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const studyData = getStudyData();
+      const currentUser = authService.getCurrentUser();
+
+      const completedSet = new Set<string>();
+      studyData.completedTopics?.forEach((t) => completedSet.add(t));
+      studyData.sessions?.forEach((s) => completedSet.add(s.subject));
+      studyData.quizResults?.forEach((q) => completedSet.add(q.subject));
+      studyData.mockTestResults?.forEach((m) => completedSet.add(m.subject));
+
+      const totalModules = 12;
+      const baseCompleted = currentUser 
+        ? Math.min(8, Math.floor((currentUser.quizzesCompleted + currentUser.testsCompleted) / 3)) 
+        : 0;
+      const totalCompleted = Math.min(totalModules, Math.max(baseCompleted, completedSet.size));
+      const percentage = Math.min(100, Math.round((totalCompleted / totalModules) * 100));
+
+      setModuleProgress({
+        completed: totalCompleted,
+        total: totalModules,
+        percentage,
+      });
+    };
+
+    updateProgress();
+    const unsubAudio = vedicSoundscape.subscribe((playing) => setIsAudioPlaying(playing));
+    const unsubAuth = authService.subscribe((state) => {
+      setUser(state.user);
+      updateProgress();
+    });
+
+    window.addEventListener('storage', updateProgress);
+    return () => {
+      unsubAudio();
+      unsubAuth();
+      window.removeEventListener('storage', updateProgress);
+    };
+  }, []);
+
+  const handleToggleSound = () => {
+    vedicSoundscape.toggle();
+  };
 
   const handleRouteClick = (route: AppRoute) => {
     onNavigate(route);
@@ -108,7 +174,68 @@ export const Navigation: React.FC<NavigationProps> = ({ currentRoute, onNavigate
         </nav>
 
         {/* Action Button & Mobile Hamburger */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          {/* User Profile Icon with Visual IKS Module Progress Ring */}
+          <button
+            type="button"
+            onClick={() => setAuthModalOpen(true)}
+            className="relative group p-1 flex items-center justify-center rounded-full hover:scale-105 active:scale-95 transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#21F1A8] min-h-[44px] min-w-[44px]"
+            aria-label={`User Profile: ${moduleProgress.percentage}% of IKS modules completed (${moduleProgress.completed}/${moduleProgress.total})`}
+            title={`${user ? user.name : 'Scholar Profile'}: ${moduleProgress.percentage}% completed (${moduleProgress.completed}/${moduleProgress.total} IKS modules)`}
+          >
+            {/* Circular SVG Progress Ring */}
+            <svg 
+              className="w-10 h-10 -rotate-90 transform" 
+              viewBox="0 0 44 44"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="navProgressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#21F1A8" />
+                  <stop offset="100%" stopColor="#00D2FF" />
+                </linearGradient>
+              </defs>
+              {/* Background Track Ring */}
+              <circle
+                cx="22"
+                cy="22"
+                r="18"
+                className="stroke-white/15"
+                strokeWidth="2.5"
+                fill="none"
+              />
+              {/* Active Module Progress Stroke */}
+              <circle
+                cx="22"
+                cy="22"
+                r="18"
+                stroke="url(#navProgressGrad)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                fill="none"
+                style={{
+                  strokeDasharray: 2 * Math.PI * 18,
+                  strokeDashoffset: (2 * Math.PI * 18) * (1 - moduleProgress.percentage / 100),
+                  transition: 'stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+              />
+            </svg>
+
+            {/* User Profile Center Avatar */}
+            <div className="absolute inset-0 m-auto w-7 h-7 rounded-full bg-[#202020] border border-white/10 flex items-center justify-center text-xs font-mono font-bold text-[#21F1A8] group-hover:bg-[#282828] group-hover:border-[#21F1A8]/50 transition-colors shadow-inner">
+              {user?.avatarSeed ? (
+                <span>{user.avatarSeed}</span>
+              ) : (
+                <User className="w-3.5 h-3.5 text-white/90 group-hover:text-[#21F1A8] transition-colors" />
+              )}
+            </div>
+
+            {/* Percentage Mini-Badge */}
+            <span className="absolute -bottom-0.5 -right-0.5 text-[9px] font-mono font-bold bg-[#171717] text-[#21F1A8] border border-[#21F1A8]/50 px-1 py-0.2 rounded-full shadow-md leading-none">
+              {moduleProgress.percentage}%
+            </span>
+          </button>
+
           <button
             onClick={() => handleRouteClick('/ai-tutor')}
             className={`flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-lg transition-all min-h-[44px] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#21F1A8] ${
@@ -227,6 +354,13 @@ export const Navigation: React.FC<NavigationProps> = ({ currentRoute, onNavigate
           </nav>
         </div>
       )}
+
+      {/* User Authentication & Profile Modal */}
+      <AuthModal 
+        isOpen={authModalOpen} 
+        onClose={() => setAuthModalOpen(false)} 
+        currentUser={user} 
+      />
     </header>
   );
 };

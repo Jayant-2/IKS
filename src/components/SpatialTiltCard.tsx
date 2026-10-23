@@ -72,16 +72,16 @@ export const SpatialTiltCard: React.FC<SpatialTiltCardProps> = ({
           ? 'transform 0.08s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out' 
           : 'transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease-out, border-color 0.3s ease-out',
         boxShadow: isHovered
-          ? '0 16px 36px -8px rgba(0, 0, 0, 0.75), 0 0 20px rgba(33, 241, 168, 0.16)'
-          : '0 4px 14px rgba(0, 0, 0, 0.4)',
+          ? '0 16px 36px -8px rgba(0, 0, 0, 0.8), 0 0 22px rgba(255, 42, 133, 0.22)'
+          : '0 4px 14px rgba(0, 0, 0, 0.5)',
       }}
     >
-      {/* Specular Vision Pro Glass Glare highlight */}
+      {/* Specular Vision Pro Glass Glare highlight (Neon Rose & Black Blue) */}
       <div
         className="pointer-events-none absolute inset-0 rounded-xl transition-opacity duration-300 z-10"
         style={{
           opacity: glare.opacity ? 0.38 : 0,
-          background: `radial-gradient(circle 120px at ${glare.x}% ${glare.y}%, rgba(33, 241, 168, 0.25), rgba(255, 255, 255, 0.09) 30%, transparent 70%)`,
+          background: `radial-gradient(circle 120px at ${glare.x}% ${glare.y}%, rgba(255, 42, 133, 0.28), rgba(56, 189, 248, 0.12) 30%, transparent 70%)`,
         }}
       />
 
