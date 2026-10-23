@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --color-charcoal-base: #171717;
+    --color-charcoal-surface: #1f1f1f;
+    --color-charcoal-card: #242424;
+    --color-mint: #21F1A8;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #171717;
+    color: #EDEDED;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: var(--font-heading);
+    letter-spacing: -0.03em;
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
+
+/* Spatial Architecture & Vision Pro Depth Elements (Charcoal + Mint) */
+.spatial-glass {
+  background: rgba(31, 31, 31, 0.72);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+.spatial-glass-subtle {
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.spatial-glass-active {
+  background: rgba(36, 36, 36, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(33, 241, 168, 0.35);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(33, 241, 168, 0.12),
+    0 1px 0 rgba(33, 241, 168, 0.2) inset;
+}
+
+/* Restrained 3D Perspective Container with Apple Vision Pro Ethereal Bloom */
+.perspective-universe {
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 0 26px rgba(33, 241, 168, 0.3)) drop-shadow(0 10px 32px rgba(0, 0, 0, 0.65));
+  will-change: transform, filter;
+  transition: filter 0.4s ease-out;
+}
+
+.perspective-universe:hover {
+  filter: drop-shadow(0 0 40px rgba(33, 241, 168, 0.48)) drop-shadow(0 0 70px rgba(33, 241, 168, 0.22)) drop-shadow(0 14px 40px rgba(0, 0, 0, 0.75));
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Animations (subtle, restrained) */
+@keyframes celestial-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-celestial-slow {
+  animation: celestial-spin-slow 120s linear infinite;
+}
+
+@keyframes celestial-circle-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-circle-auto-moving {
+  animation: celestial-circle-spin 25s linear infinite;
+}
+
+/* Soft rhythmic pulse glow for 3D globe base */
+@keyframes globe-base-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.97);
+    filter: drop-shadow(0 0 14px rgba(33, 241, 168, 0.25));
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 32px rgba(33, 241, 168, 0.6));
+  }
+}
+
+@keyframes globe-pedestal-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: translateX(-50%) scaleX(0.92) scaleY(0.85);
+    box-shadow: 0 0 20px rgba(33, 241, 168, 0.2);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateX(-50%) scaleX(1.08) scaleY(1.15);
+    box-shadow: 0 0 45px rgba(33, 241, 168, 0.6), 0 0 75px rgba(33, 241, 168, 0.3);
+  }
+}
+
+.animate-globe-base-glow {
+  animation: globe-base-pulse 4.5s ease-in-out infinite;
+}
+
+.animate-globe-pedestal-glow {
+  animation: globe-pedestal-pulse 4.5s ease-in-out infinite;
+}
+
+/* Always-moving spatial floating and continuous levitation for the 3D globe object */
+@keyframes globe-always-moving {
+  0% {
+    transform: translateY(0px);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+  70% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-globe-always-moving {
+  animation: globe-always-moving 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Custom scrollbar in charcoal & mint */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #171717;
+}
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #21F1A8;
+}
+

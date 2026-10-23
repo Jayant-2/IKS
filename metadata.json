@@ -1,0 +1,6 @@
+{
+  "name": "IKS Explorer AI",
+  "description": "An immersive spatial 3D educational platform exploring Indian Knowledge Systems (Mathematics, Astronomy, Philosophy, Ayurveda, and Literature) with Apple Vision Pro inspired interfaces.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
